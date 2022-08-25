@@ -1,6 +1,15 @@
 const express = require('express');
-const mongo = require('mongoose');
+const mongoose = require('mongoose');
+const env = require('dotenv').config();
+
 const app = express();
+app.use(express.json());
+
+const appCode = process.env.DB_CODE;
+console.log(appCode)
+mongoose.connect(
+    "mongodb+srv://tamaroh:mNfn6IHwQSfzLDSm@mycluster.2fc3hkk.mongodb.net/?retryWrites=true&w=majority"
+    );
 
 app.use((req, res) => {
     res.send('');
