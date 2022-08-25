@@ -2,9 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const env = require("dotenv").config();
 const item = import("./Items.js");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
+
 const port = process.env.DB_PORT || 9000;
 const appCode = process.env.DB_CODE.replace(
   "<password>",
