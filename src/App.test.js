@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
 import App from './App';
 
 xtest('renders learn react link', () => {
@@ -7,5 +9,12 @@ xtest('renders learn react link', () => {
   expect(linkElement).toBeInTheDocument();
 });
 test("renders data", () => {
-  render()
+  const fakeItem = {
+    name: "Joni Baez",
+  };
+  jest.spyOn(global, "fetch").mockImplementation(() =>
+    Promise.resolve({
+      json: () => Promise.resolve(fakeUser)
+    })
+  );
 })
