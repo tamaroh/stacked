@@ -5,11 +5,9 @@ const env = require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-const appCode = process.env.DB_CODE;
-console.log(appCode)
-mongoose.connect(
-    "mongodb+srv://tamaroh:mNfn6IHwQSfzLDSm@mycluster.2fc3hkk.mongodb.net/?retryWrites=true&w=majority"
-    );
+const appCode = process.env.DB_CODE.replace("<password>", process.env.DB_PASS);
+
+mongoose.connect(appCode);
 
 app.use((req, res) => {
     res.send('');
