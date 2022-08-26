@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddItem from "./AddItem";
 import "./App.css";
-
+import axios from "axios";
 function App() {
   const [data, setData] = useState([]);
 
@@ -11,9 +11,13 @@ function App() {
   }
   useEffect(() => {
     fetchAllData();
-  }, []);
+  }, [data]);
+const removeItem = (e) => {
+  axios.delete(`/item/${e.target.id}`);
+}
+
   const itemList = data.map((item, index) => {
-    return <li key={index}>{item.name}</li>;
+    return <li key={index}>{item.name}&nbsp;<span onClick={removeItem} id={item._id}>delete</span></li>;
   });
   return (
     <div>
@@ -22,7 +26,7 @@ function App() {
         <h2>Items</h2>
         <ul>{itemList}</ul>
         <div>
-          <AddItem></AddItem>
+          <AddItem data={data} setData={setData}></AddItem>
         </div>
       </div>
     </div>

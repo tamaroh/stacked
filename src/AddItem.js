@@ -1,13 +1,17 @@
-import React, {useState, useEffect } from "react";
+import React, {useState } from "react";
 import axios from "axios";
 
-const AddItem = (props) => {
+const AddItem = ({setData, data}) => {
     const [newItem, setNewItem] = useState("");
     const postItem = () => {
         console.log(newItem)
         axios.post("/item", {
             name: newItem
-        }).then(res => console.log(res.data))
+        }).then(res => {
+            data.push(res);
+            setData(data);
+            console.log(res)
+        })
         .catch(err => console.log(err));
     }
     const onChange = (e) => {
