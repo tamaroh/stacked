@@ -14,9 +14,9 @@ const newItems = [
 ];
 function testSeed(mode) {
     if (mode === "insert") {
-        items.insertMany(newItems,(err) => console.log(err));
+        items.insertMany(newItems,(err) => err || console.log(err));
     } else {
-        items.deleteMany({}, (err) => console.log(err));
+        items.deleteMany({}, (err) => err || console.log(err));
     }
 }
 
