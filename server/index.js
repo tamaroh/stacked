@@ -9,8 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 const port = process.env.DB_PORT || 9000;
+const localDB = "mongodb://127.0.0.1/stacked"
 const appCode =
-  process.env.MONGODB_URI ||
+  process.env.MONGODB_URI || 
+//   localDB;
   process.env.DB_CODE.replace("<password>", process.env.DB_PASS).replace(
     "/?",
     `/${process.env.DB_NAME}?`
@@ -23,6 +25,12 @@ app.get("/", async (req, res) => {
   const Items = await Item.find();
   res.json(Items);
 });
+app.post("/item", async(req, res) => {
+    const newItem = new Item({name: req.body.name});
+    await newItem.save()
+    .catch(err => console.log(err));
+    res.json(newItem);
+})
 app.listen(port, () => {
   console.log(`listen on Port ${port}`);
 });
