@@ -17,7 +17,7 @@ const removeItem = (e) => {
 }
 
   const itemList = data.map((item, index) => {
-    return <li key={index}>{item.name}&nbsp;<span onClick={removeItem} id={item._id}>delete</span></li>;
+    return <li key={index}>{item.name}&nbsp;<span onClick={removeItem} id={item._id}>🗑</span></li>;
   });
   return (
     <div>
