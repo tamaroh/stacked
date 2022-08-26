@@ -34,3 +34,5 @@ app.post("/item", async(req, res) => {
 app.listen(port, () => {
   console.log(`listen on Port ${port}`);
 });
+
+module.exports = app;
