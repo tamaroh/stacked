@@ -5,7 +5,7 @@ const AddItem = ({setData, data}) => {
     const [newItem, setNewItem] = useState("");
     const postItem = () => {
         console.log(newItem)
-        axios.post("http://localhost:4000/item", {
+        axios.post("/item", {
             name: newItem
         }).then(res => {
             data.push(res);
