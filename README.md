@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Stacked
+This Repo was created during my time as a student at Code Chrysalis.
+Thank you for let me have a chance to create full-scratch back-end app!
+It was so struggleful but exciting moment for me.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## about this app
+This app is named "__Stacked__", that can manage your stacked games, books, etc.
+ (We call them "積ん読" or "積みゲー" in Japanese)
 
-## Available Scripts
+## requirements
+Please install these applications beforehand.
+[node.js](https://nodejs.org/)
+[mongoDB](https://www.mongodb.com/ja-jp)
+and make sure mongoDB servise is started.
 
-In the project directory, you can run:
+### Database settings
+You don't have to create database for the local use.
+if you have MongoDB Atlas database, you can use with .env file.
 
-### `npm start`
+## how to install this app
+1. clone this repository
+    ```zsh
+    $ git clone git@github.com:tamaroh/stacked.git
+    ```
+1. Go into the repository
+    ```zsh
+    $ cd stacked
+    ```
+1. Install dependencies
+    ```zsh
+    $ npm i
+    ```
+2. set .env file to the root directory if you have MongoDB Atlas database:
+    ```zsh
+    DB_PASS="qwertyuiop"
+    DB_NAME="stacked"
+    DB_CODE="mongodb......"
+    EXPRESS_PORT=4000
+    ```
+    (DB_CODE is the uri of the database, you can copy from "connect to mycluster -> connect your application")
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. Run the server and the front app.
+    ```bash
+    $ npm run server-start
+    $ npm run start
+    ```
+### end points
+You can use these end points with some HTTP client such as [Thunder Client](https://github.com/rangav/thunder-client-support).
+| method | end point | description |
+|------- | --------- | ----------- |
+|GET|/|get all the items data|
+|POST|/item|add an item|
+|DELETE|/item/{id}|delete an item by id|
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## features planned (in progress)
+- [ ] edit item data
+- [ ] add category data
+- [ ] refactor using TypeScript
+- [ ] account management
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
