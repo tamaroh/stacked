@@ -6,15 +6,14 @@ function App() {
   const [data, setData] = useState([]);
 
   async function fetchAllData() {
-    const response = await axios.get("/");
-    console.log(response.data)
+    const response = await axios.get("/api");
     setData(await response.data);
   }
   useEffect(() => {
     fetchAllData();
   }, [data]);
 const removeItem = (e) => {
-  axios.delete(`/item/${e.target.id}`);
+  axios.delete(`/api/item/${e.target.id}`);
 }
 
   const itemList = data.map((item, index) => {

@@ -14,16 +14,16 @@ mongoose.connect(appCode);
 const itemSchema = mongoose.Schema({ name: String });
 const Item = mongoose.model("Item", itemSchema);
 
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   const items = await Item.find();
   res.json(items);
 });
-app.post("/item", async (req, res) => {
+app.post("/api/item", async (req, res) => {
   const newItem = new Item({ name: req.body.name });
   await newItem.save().catch((err) => console.log(err));
   res.json(newItem);
 });
-app.delete("/item/:id", async (req, res) => {
+app.delete("/api/item/:id", async (req, res) => {
   const result = await Item.deleteOne({_id: req.params.id});
   res.json(result)
 })
