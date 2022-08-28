@@ -6,9 +6,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: "http://localhost:3000"
-}))
+app.use(cors())
 const localDB = `mongodb://127.0.0.1/${process.env.DB_NAME}`;
 const appCode = process.env.MONGODB_URI || localDB;
 mongoose.connect(appCode);
