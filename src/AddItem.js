@@ -4,13 +4,8 @@ import axios from "axios";
 const AddItem = ({setData, data}) => {
     const [newItem, setNewItem] = useState("");
     const postItem = () => {
-<<<<<<< HEAD
         console.log(newItem)
         axios.post("/item", {
-=======
-
-        axios.post("http://localhost:4000/item", {
->>>>>>> 681e5237715133d11eaf4ff3a96838dbfff70457
             name: newItem
         }).then(res => {
             data.push(res);
