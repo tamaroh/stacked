@@ -29,7 +29,7 @@ app.delete("/api/item/:id", async (req, res) => {
   const result = await Item.deleteOne({_id: req.params.id});
   res.json(result)
 })
-const port = process.env.EXPRESS_PORT ||  4000;
+const port = process.env.PORT ||  4000;
 app.listen(port, () => {
   console.log(`listen on Port ${port}`);
 });
