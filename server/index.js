@@ -1,19 +1,36 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const env = require('dotenv').config();
+const express = require("express");
+const mongoose = require("mongoose");
+const env = require("dotenv").config();
+const item = import("./Items.js");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors({
+  origin: "http://localhost:3000"
+}))
+const localDB = `mongodb://127.0.0.1/${process.env.DB_NAME}`;
+const appCode = process.env.MONGODB_URI || localDB;
+mongoose.connect(appCode);
+const itemSchema = mongoose.Schema({ name: String });
+const Item = mongoose.model("Item", itemSchema);
 
-const appCode = process.env.DB_CODE;
-console.log(appCode)
-mongoose.connect(
-    "mongodb+srv://tamaroh:mNfn6IHwQSfzLDSm@mycluster.2fc3hkk.mongodb.net/?retryWrites=true&w=majority"
-    );
+app.get("/", async (req, res) => {
+  const items = await Item.find();
+  res.json(items);
+});
+app.post("/item", async (req, res) => {
+  const newItem = new Item({ name: req.body.name });
+  await newItem.save().catch((err) => console.log(err));
+  res.json(newItem);
+});
+app.delete("/item/:id", async (req, res) => {
+  const result = await Item.deleteOne({_id: req.params.id});
+  res.json(result)
+})
+const port = process.env.EXPRESS_PORT || 9000;
+app.listen(port, () => {
+  console.log(`listen on Port ${port}`);
+});
 
-app.use((req, res) => {
-    res.send('');
-})
-app.listen(4000, () => {
-    console.log("listen on Port 4000")
-})
+module.exports = { app, mongoose };
