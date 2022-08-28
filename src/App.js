@@ -13,7 +13,7 @@ function App() {
     fetchAllData();
   }, [data]);
 const removeItem = (e) => {
-  axios.delete(`/item/${e.target.id}`);
+  axios.delete(`http://localhost:4000/item/${e.target.id}`);
 }
 
   const itemList = data.map((item, index) => {
