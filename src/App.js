@@ -6,7 +6,7 @@ function App() {
   const [data, setData] = useState([]);
 
   async function fetchAllData() {
-    const response = await fetch("https://localhost:4000/");
+    const response = await fetch("http://localhost:4000/");
     setData(await response.json());
   }
   useEffect(() => {
