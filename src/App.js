@@ -6,14 +6,15 @@ function App() {
   const [data, setData] = useState([]);
 
   async function fetchAllData() {
-    const response = await axios.get("http://localhost:4000/");
+    const response = await axios.get("/");
+    console.log(response.data)
     setData(await response.data);
   }
   useEffect(() => {
     fetchAllData();
   }, [data]);
 const removeItem = (e) => {
-  axios.delete(`http://localhost:4000/item/${e.target.id}`);
+  axios.delete(`/item/${e.target.id}`);
 }
 
   const itemList = data.map((item, index) => {
