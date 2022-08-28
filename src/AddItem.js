@@ -5,12 +5,11 @@ const AddItem = ({setData, data}) => {
     const [newItem, setNewItem] = useState("");
     const postItem = () => {
         console.log(newItem)
-        axios.post("/item", {
+        axios.post("/api/item", {
             name: newItem
         }).then(res => {
             data.push(res);
             setData(data);
-            console.log(res)
         })
         .catch(err => console.log(err));
     }
